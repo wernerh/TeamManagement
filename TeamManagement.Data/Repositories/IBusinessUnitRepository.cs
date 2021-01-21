@@ -9,5 +9,7 @@ namespace TeamManagement.Data.Repositories
         Task<BusinessUnit> GetBusinessUnitByIdAsync(int id);
 
         Task<List<BusinessUnit>> GetAllBusinessUnitsAsync();
+
+        Task<BusinessUnit> AddBusinessUnitsAsync(string name, int businessUnitTypeId, int businessUnitLocationId, int? parentBusinessUnitId = null);
     }
 }

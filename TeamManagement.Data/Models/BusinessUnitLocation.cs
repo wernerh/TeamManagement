@@ -7,7 +7,7 @@ namespace TeamManagement.Data.Models
     public partial class BusinessUnitLocation
     {
         public int Id { get; set; }
-        public string Description { get; set; }
+        public string Name { get; set; }
         public string PhysicalLine1 { get; set; }
         public string PhysicalLine2 { get; set; }
         public string PhysicalTown { get; set; }

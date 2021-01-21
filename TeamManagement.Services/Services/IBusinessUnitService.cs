@@ -7,6 +7,7 @@ namespace TeamManagement.Services.Services
     public interface IBusinessUnitService
     {
         Task<List<BusinessUnit>> GetAllBusinessUnitsAsync();
-        Task<BusinessUnit> GetCustomerByIdAsync(int id);     
+        Task<BusinessUnit> GetBusinessUnitByIdAsync(int id);
+        Task<BusinessUnit> AddBusinessUnitsAsync(string name, int businessUnitTypeId, int businessUnitLocationId, int? parentBusinessUnitId = null);
     }
 }

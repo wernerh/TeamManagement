@@ -5,7 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using System;
 using TeamManagement.Data.Models;
 using TeamManagement.Data.Repositories;
 using TeamManagement.Services.Services;
@@ -29,8 +28,10 @@ namespace TeamManagement
 
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient<IBusinessUnitRepository, BusinessUnitRepository>();
+            services.AddTransient<IEmployeeRepository, EmployeeRepository>();
 
             services.AddTransient<IBusinessUnitService, BusinessUnitService>();
+            services.AddTransient<IEmployeeService, EmployeeService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

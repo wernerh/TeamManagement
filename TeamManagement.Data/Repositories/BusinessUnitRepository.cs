@@ -20,5 +20,10 @@ namespace TeamManagement.Data.Repositories
         {
             return await GetAll().ToListAsync();
         }
+
+        public async Task<BusinessUnit> AddBusinessUnitsAsync(string name, int businessUnitTypeId, int businessUnitLocationId, int? parentBusinessUnitId = null)
+        {
+            return await AddAsync(new BusinessUnit { Name = name, BusinessUnitTypeId = businessUnitTypeId, BusinessUnitLocationId = businessUnitLocationId, ParentBusinessUnitId = parentBusinessUnitId });
+        }
     }
 }

@@ -19,9 +19,14 @@ namespace TeamManagement.Services.Services
             return await _businessUnitRepository.GetAllBusinessUnitsAsync();
         }
 
-        public async Task<BusinessUnit> GetCustomerByIdAsync(int id)
+        public async Task<BusinessUnit> GetBusinessUnitByIdAsync(int id)
         {
             return await _businessUnitRepository.GetBusinessUnitByIdAsync(id);
+        }
+
+        public async Task<BusinessUnit> AddBusinessUnitsAsync(string name, int businessUnitTypeId, int businessUnitLocationId, int? parentBusinessUnitId = null)
+        {
+            return await _businessUnitRepository.AddBusinessUnitsAsync(name, businessUnitTypeId, businessUnitLocationId, parentBusinessUnitId);
         }
     }
 }
