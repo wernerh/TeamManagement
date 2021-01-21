@@ -45,6 +45,47 @@ namespace TeamManagement.Data.Migrations
                     b.HasIndex("BusinessUnitTypeId");
 
                     b.ToTable("BusinessUnit");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BusinessUnitLocationId = 1,
+                            BusinessUnitTypeId = 1,
+                            Name = "Blue Bulls"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            BusinessUnitLocationId = 1,
+                            BusinessUnitTypeId = 2,
+                            Name = "Super Rugby",
+                            ParentBusinessUnitId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            BusinessUnitLocationId = 1,
+                            BusinessUnitTypeId = 2,
+                            Name = "Currie Cup",
+                            ParentBusinessUnitId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            BusinessUnitLocationId = 1,
+                            BusinessUnitTypeId = 2,
+                            Name = "Under 21",
+                            ParentBusinessUnitId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            BusinessUnitLocationId = 1,
+                            BusinessUnitTypeId = 2,
+                            Name = "Under 18",
+                            ParentBusinessUnitId = 1
+                        });
                 });
 
             modelBuilder.Entity("TeamManagement.Data.Models.BusinessUnitLocation", b =>
@@ -72,6 +113,53 @@ namespace TeamManagement.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("BusinessUnitLocation");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Loftus Versfeld Stadium",
+                            PhysicalCode = "0007",
+                            PhysicalLine1 = "416 Kirkness St",
+                            PhysicalLine2 = "Arcadia",
+                            PhysicalTown = "Pretoria"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Ellis Park Stadium",
+                            PhysicalCode = "2094",
+                            PhysicalLine1 = "S Park Ln",
+                            PhysicalLine2 = "New Doornfontein",
+                            PhysicalTown = "Johannesburg"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Toyota Stadium",
+                            PhysicalCode = "9320",
+                            PhysicalLine1 = "Willows",
+                            PhysicalLine2 = "",
+                            PhysicalTown = "Bloemfontein"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Newlands Rugby Stadium",
+                            PhysicalCode = "7700",
+                            PhysicalLine1 = "8 Boundary Rd",
+                            PhysicalLine2 = "Newlands",
+                            PhysicalTown = "Cape Town"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Jonsson Kings Park",
+                            PhysicalCode = "4025",
+                            PhysicalLine1 = "Jacko Jackson Dr",
+                            PhysicalLine2 = "Stamford Hill",
+                            PhysicalTown = "Durban"
+                        });
                 });
 
             modelBuilder.Entity("TeamManagement.Data.Models.BusinessUnitType", b =>
@@ -87,6 +175,18 @@ namespace TeamManagement.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("BusinessUnitType");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Management"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "RugbyTeam"
+                        });
                 });
 
             modelBuilder.Entity("TeamManagement.Data.Models.Employee", b =>
@@ -124,6 +224,41 @@ namespace TeamManagement.Data.Migrations
                     b.HasIndex("EmployeeTypeId");
 
                     b.ToTable("Employee");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BusinessUnitId = 2,
+                            CellNumber = "1234567890",
+                            Email = "test@gmail.com",
+                            EmployeeTypeId = 3,
+                            Firstnames = "Jake",
+                            Initials = "jw",
+                            Surname = "White"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            BusinessUnitId = 2,
+                            CellNumber = "1234567890",
+                            Email = "test@gmail.com",
+                            EmployeeTypeId = 5,
+                            Firstnames = "Handrè",
+                            Initials = "hp",
+                            Surname = "Pollard"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            BusinessUnitId = 2,
+                            CellNumber = "1234567890",
+                            Email = "test@gmail.com",
+                            EmployeeTypeId = 5,
+                            Firstnames = "Warrick",
+                            Initials = "wg",
+                            Surname = "Gelant"
+                        });
                 });
 
             modelBuilder.Entity("TeamManagement.Data.Models.EmployeeType", b =>
@@ -139,6 +274,33 @@ namespace TeamManagement.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("EmployeeType");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Management"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Admin"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Coach"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Physiotherapist"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Player"
+                        });
                 });
 
             modelBuilder.Entity("TeamManagement.Data.Models.PlayerData", b =>
@@ -165,6 +327,24 @@ namespace TeamManagement.Data.Migrations
                     b.HasIndex("EmployeeId");
 
                     b.ToTable("PlayerData");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Age = 26,
+                            EmployeeId = 2,
+                            Height = 1.8799999999999999,
+                            Weight = 96.0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Age = 25,
+                            EmployeeId = 3,
+                            Height = 1.78,
+                            Weight = 85.0
+                        });
                 });
 
             modelBuilder.Entity("TeamManagement.Data.Models.BusinessUnit", b =>

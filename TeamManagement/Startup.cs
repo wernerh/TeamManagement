@@ -25,8 +25,8 @@ namespace TeamManagement
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<TeamManagementContext>(options => options.UseSqlServer(Configuration["Database:ConnectionString"]));
-            services.AddDbContext<TeamManagementContext>(options => options.UseInMemoryDatabase(Guid.NewGuid().ToString()));
+            services.AddDbContext<TeamManagementContext>(options => options.UseSqlServer(Configuration["Database:ConnectionString"]));
+            //services.AddDbContext<TeamManagementContext>(options => options.UseInMemoryDatabase(Guid.NewGuid().ToString()));
 
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient<IBusinessUnitRepository, BusinessUnitRepository>();

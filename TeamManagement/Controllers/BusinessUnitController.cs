@@ -26,14 +26,12 @@ namespace TeamManagement.Controllers
             return _businessUnitService.GetAllBusinessUnitsAsync().Result.ToList();
         }
 
-
         [Route("api/[controller]/[action]/{id}")]
         [HttpGet]
         public BusinessUnitDto GetBusinessUnitById(int id)
         {
             return _businessUnitService.GetBusinessUnitByIdAsync(id).Result;
         }
-
 
         [Route("api/[controller]/[action]")]
         [HttpPost]
