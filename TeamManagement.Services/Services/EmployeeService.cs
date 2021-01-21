@@ -33,7 +33,7 @@ namespace TeamManagement.Services.Services
         public async Task<EmployeeDto> AddEmployeeAsync(EmployeeDto employee)
         {
             var result = await _employeeRepository
-                                .AddEmployeeAsync((int)employee.EmployeeType, employee.BusinessUnitId, employee.Initials,
+                                .AddEmployeeAsync(employee.EmployeeTypeId, employee.BusinessUnitId, employee.Initials,
                                                   employee.Firstnames, employee.Surname, employee.Email, employee.CellNumber);
 
             return _mapper.Map<EmployeeDto>(result);

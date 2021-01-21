@@ -10,6 +10,8 @@ namespace TeamManagement.Services.Profiles
         public BusinessUnitProfile()
         {
             CreateMap<BusinessUnit, BusinessUnitDto>();
+            CreateMap<BusinessUnitType, BusinessUnitTypeDto>();
+            CreateMap<BusinessUnitLocation, BusinessUnitLocationDto>();
         }
     }
 }

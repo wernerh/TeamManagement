@@ -9,6 +9,7 @@ namespace TeamManagement.Services.Profiles
         public EmployeeProfile()
         {
             CreateMap<Employee, EmployeeDto>();
+            CreateMap<EmployeeType, EmployeeTypeDto>();
         }
     }
 }

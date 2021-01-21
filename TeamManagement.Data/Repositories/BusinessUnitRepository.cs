@@ -14,13 +14,17 @@ namespace TeamManagement.Data.Repositories
         public async Task<BusinessUnit> GetBusinessUnitByIdAsync(int id)
         {
             return await GetAll()
-                        .FirstOrDefaultAsync(x => x.Id == id);
+                            .Include(x => x.BusinessUnitLocation)
+                            .Include(x => x.BusinessUnitType)
+                            .FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<List<BusinessUnit>> GetAllBusinessUnitsAsync()
         {
             return await GetAll()
-                        .ToListAsync();
+                            .Include(x => x.BusinessUnitLocation)
+                            .Include(x => x.BusinessUnitType)
+                            .ToListAsync();
         }
 
         public async Task<BusinessUnit> AddBusinessUnitsAsync(string name, int businessUnitTypeId, int businessUnitLocationId, int? parentBusinessUnitId = null)

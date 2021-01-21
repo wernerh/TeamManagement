@@ -1,4 +1,4 @@
-﻿using TeamManagement.Utilities.Enums;
+﻿
 
 namespace TeamManagement.Utilities.Dtos
 {
@@ -9,6 +9,8 @@ namespace TeamManagement.Utilities.Dtos
         public int BusinessUnitLocationId { get; set; }
         public string Name { get; set; }
 
-        public BusinessUnitTypeEnum BusinessUnitType { get; set; }
+        public BusinessUnitTypeDto BusinessUnitType { get; set; }
+
+        public BusinessUnitLocationDto BusinessUnitLocation { get; set; }
     }
 }

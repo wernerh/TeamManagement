@@ -33,7 +33,7 @@ namespace TeamManagement.Services.Services
         public async Task<BusinessUnitDto> AddBusinessUnitsAsync(BusinessUnitDto unit)
         {
             var result = await _businessUnitRepository
-                                .AddBusinessUnitsAsync(unit.Name, (int)unit.BusinessUnitType,
+                                .AddBusinessUnitsAsync(unit.Name, unit.BusinessUnitTypeId,
                                                        unit.BusinessUnitLocationId, unit.ParentBusinessUnitId);
 
             return _mapper.Map<BusinessUnitDto>(result);
