@@ -28,5 +28,10 @@ namespace TeamManagement.Services.Services
         {
             return await _employeeRepository.AddEmployeeAsync(employeeTypeId, businessUnitId, initials, firstnames, surname, email, cellNumber);
         }
+
+        public async Task<Employee> TransferEmployeeAsync(int id, int newBusinessUnitId)
+        {
+            return await _employeeRepository.TransferEmployeeAsync(id, newBusinessUnitId);
+        }
     }
 }

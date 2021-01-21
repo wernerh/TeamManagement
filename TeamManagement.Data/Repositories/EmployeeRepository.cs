@@ -24,13 +24,21 @@ namespace TeamManagement.Data.Repositories
         public async Task<Employee> AddEmployeeAsync(int employeeTypeId, int businessUnitId, string initials, string firstnames, string surname, string email, string cellNumber)
         {
             return await AddAsync(new Employee { EmployeeTypeId = employeeTypeId,
-                                                 BusinessUnitId = businessUnitId,
-                                                 Initials = initials,
-                                                 Firstnames = firstnames,
-                                                 Surname = surname,
-                                                 Email = email,
-                                                 CellNumber = cellNumber
+                BusinessUnitId = businessUnitId,
+                Initials = initials,
+                Firstnames = firstnames,
+                Surname = surname,
+                Email = email,
+                CellNumber = cellNumber
             });
+        }
+
+        public async Task<Employee> TransferEmployeeAsync(int id, int newBusinessUnitId)
+        {
+            var employee = GetAll().FirstOrDefaultAsync(x => x.Id == id).Result;
+            employee.BusinessUnitId = newBusinessUnitId;
+
+            return await UpdateAsync(employee);
         }
     }
 }

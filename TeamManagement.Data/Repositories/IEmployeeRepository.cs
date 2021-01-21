@@ -11,5 +11,7 @@ namespace TeamManagement.Data.Repositories
         Task<List<Employee>> GetAllEmployeesAsync();
 
         Task<Employee> AddEmployeeAsync(int employeeTypeId, int businessUnitId, string initials, string firstnames, string surname, string email, string cellNumber);
+
+        Task<Employee> TransferEmployeeAsync(int id, int newBusinessUnitId);
     }
 }
