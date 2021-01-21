@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
-using System.Linq;
-using TeamManagement.Data.Models;
 using TeamManagement.Services.Services;
+using TeamManagement.Utilities.Dtos;
 
 namespace TeamManagement.Controllers
 {
@@ -20,18 +19,32 @@ namespace TeamManagement.Controllers
             _employeeService = employeeService;
         }
 
-        [Route("api/Employee/GetAllEmployees")]
+        [Route("api/[controller]/[action]")]
         [HttpGet]
-        public IEnumerable<Employee> GetGetAllEmployees()
+        public IEnumerable<EmployeeDto> GetGetAllEmployees()
         {
             return _employeeService.GetAllEmployeesAsync().Result;
         }
 
-        [Route("api/Employee/GetEmployeeById/{id}")]
+        [Route("api/[controller]/[action]/{id}")]
         [HttpGet]
-        public Employee GetEmployeeById(int id)
+        public EmployeeDto GetEmployeeById(int id)
         {
             return _employeeService.GetEmployeeByIdAsync(id).Result;
+        }
+
+        [Route("api/[controller]/[action]")]
+        [HttpPost]
+        public EmployeeDto AddEmployee(EmployeeDto employee)
+        {
+            return _employeeService.AddEmployeeAsync(employee).Result;
+        }
+
+        [Route("api/[controller]/[action]")]
+        [HttpPost]
+        public EmployeeDto TransferEmployee(int id, int newBusinessUnitId)
+        {
+            return _employeeService.TransferEmployeeAsync(id, newBusinessUnitId).Result;
         }
     }
 }

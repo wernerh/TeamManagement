@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -5,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System;
 using TeamManagement.Data.Models;
 using TeamManagement.Data.Repositories;
 using TeamManagement.Services.Services;
@@ -23,8 +25,8 @@ namespace TeamManagement
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TeamManagementContext>(options => options.UseSqlServer(Configuration["Database:ConnectionString"]));
-            //services.AddDbContext<TeamManagementContext>(options => options.UseInMemoryDatabase(Guid.NewGuid().ToString()));
+            //services.AddDbContext<TeamManagementContext>(options => options.UseSqlServer(Configuration["Database:ConnectionString"]));
+            services.AddDbContext<TeamManagementContext>(options => options.UseInMemoryDatabase(Guid.NewGuid().ToString()));
 
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient<IBusinessUnitRepository, BusinessUnitRepository>();
@@ -32,6 +34,8 @@ namespace TeamManagement
 
             services.AddTransient<IBusinessUnitService, BusinessUnitService>();
             services.AddTransient<IEmployeeService, EmployeeService>();
+
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

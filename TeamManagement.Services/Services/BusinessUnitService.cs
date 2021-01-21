@@ -1,32 +1,42 @@
-﻿using System.Collections.Generic;
+﻿using AutoMapper;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TeamManagement.Data.Models;
 using TeamManagement.Data.Repositories;
+using TeamManagement.Utilities.Dtos;
 
 namespace TeamManagement.Services.Services
 {
     public class BusinessUnitService : IBusinessUnitService
     {
         private readonly IBusinessUnitRepository _businessUnitRepository;
+        private readonly IMapper _mapper;
 
-        public BusinessUnitService(IBusinessUnitRepository businessUnitRepository)
+        public BusinessUnitService(IBusinessUnitRepository businessUnitRepository, IMapper mapper)
         {
             _businessUnitRepository = businessUnitRepository;
+            _mapper = mapper;
         }
 
-        public async Task<List<BusinessUnit>> GetAllBusinessUnitsAsync()
+        public async Task<List<BusinessUnitDto>> GetAllBusinessUnitsAsync()
         {
-            return await _businessUnitRepository.GetAllBusinessUnitsAsync();
+            var result = await _businessUnitRepository.GetAllBusinessUnitsAsync();
+            return _mapper.Map<List<BusinessUnit>, List<BusinessUnitDto>>(result);
         }
 
-        public async Task<BusinessUnit> GetBusinessUnitByIdAsync(int id)
+        public async Task<BusinessUnitDto> GetBusinessUnitByIdAsync(int id)
         {
-            return await _businessUnitRepository.GetBusinessUnitByIdAsync(id);
+            var result = await _businessUnitRepository.GetBusinessUnitByIdAsync(id);
+            return _mapper.Map<BusinessUnitDto>(result);
         }
 
-        public async Task<BusinessUnit> AddBusinessUnitsAsync(string name, int businessUnitTypeId, int businessUnitLocationId, int? parentBusinessUnitId = null)
+        public async Task<BusinessUnitDto> AddBusinessUnitsAsync(BusinessUnitDto unit)
         {
-            return await _businessUnitRepository.AddBusinessUnitsAsync(name, businessUnitTypeId, businessUnitLocationId, parentBusinessUnitId);
+            var result = await _businessUnitRepository
+                                .AddBusinessUnitsAsync(unit.Name, (int)unit.BusinessUnitType,
+                                                       unit.BusinessUnitLocationId, unit.ParentBusinessUnitId);
+
+            return _mapper.Map<BusinessUnitDto>(result);
         }
     }
 }

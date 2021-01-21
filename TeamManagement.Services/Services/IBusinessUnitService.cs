@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TeamManagement.Data.Models;
+using TeamManagement.Utilities.Dtos;
 
 namespace TeamManagement.Services.Services
 {
     public interface IBusinessUnitService
     {
-        Task<List<BusinessUnit>> GetAllBusinessUnitsAsync();
-        Task<BusinessUnit> GetBusinessUnitByIdAsync(int id);
-        Task<BusinessUnit> AddBusinessUnitsAsync(string name, int businessUnitTypeId, int businessUnitLocationId, int? parentBusinessUnitId = null);
+        Task<List<BusinessUnitDto>> GetAllBusinessUnitsAsync();
+        Task<BusinessUnitDto> GetBusinessUnitByIdAsync(int id);
+        Task<BusinessUnitDto> AddBusinessUnitsAsync(BusinessUnitDto unit);
     }
 }

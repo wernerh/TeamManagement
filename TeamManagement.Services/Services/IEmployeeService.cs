@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TeamManagement.Data.Models;
+using TeamManagement.Utilities.Dtos;
 
 namespace TeamManagement.Services.Services
 {
     public interface IEmployeeService
     {
-        Task<List<Employee>> GetAllEmployeesAsync();
-        Task<Employee> GetEmployeeByIdAsync(int id);
-        Task<Employee> AddEmployeeAsync(int employeeTypeId, int businessUnitId, string initials, string firstnames, string surname, string email, string cellNumber);
-        Task<Employee> TransferEmployeeAsync(int id, int newBusinessUnitId);
+        Task<List<EmployeeDto>> GetAllEmployeesAsync();
+        Task<EmployeeDto> GetEmployeeByIdAsync(int id);
+        Task<EmployeeDto> AddEmployeeAsync(EmployeeDto employee);
+        Task<EmployeeDto> TransferEmployeeAsync(int id, int newBusinessUnitId);
     }
 }

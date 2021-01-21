@@ -2,8 +2,8 @@
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
-using TeamManagement.Data.Models;
 using TeamManagement.Services.Services;
+using TeamManagement.Utilities.Dtos;
 
 namespace TeamManagement.Controllers
 {
@@ -19,28 +19,27 @@ namespace TeamManagement.Controllers
             _businessUnitService = businessUnitService;
         }
 
-
-        [Route("api/BusinessUnit/GetAllBusinessUnits")]
+        [Route("api/[controller]/[action]")]
         [HttpGet]
-        public IEnumerable<BusinessUnit> GetAllBusinessUnits()
+        public IEnumerable<BusinessUnitDto> GetAllBusinessUnits()
         {
             return _businessUnitService.GetAllBusinessUnitsAsync().Result.ToList();
         }
 
 
-        [Route("api/BusinessUnit/GetBusinessUnitById/{id}")]
+        [Route("api/[controller]/[action]/{id}")]
         [HttpGet]
-        public BusinessUnit GetBusinessUnitById(int id)
+        public BusinessUnitDto GetBusinessUnitById(int id)
         {
             return _businessUnitService.GetBusinessUnitByIdAsync(id).Result;
         }
 
 
-        [Route("api/BusinessUnit/AddBusinessUnit")]
+        [Route("api/[controller]/[action]")]
         [HttpPost]
-        public BusinessUnit AddBusinessUnit(BusinessUnit unit)
+        public BusinessUnitDto AddBusinessUnit(BusinessUnitDto unit)
         {
-            return _businessUnitService.AddBusinessUnitsAsync(unit.Name, unit.BusinessUnitTypeId, unit.BusinessUnitLocationId, unit.ParentBusinessUnitId).Result;
+            return _businessUnitService.AddBusinessUnitsAsync(unit).Result;
         }
     }
 }
