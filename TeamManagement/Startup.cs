@@ -31,9 +31,11 @@ namespace TeamManagement
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient<IBusinessUnitRepository, BusinessUnitRepository>();
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+            services.AddTransient<IPlayerDataRepository, PlayerDataRepository>();
 
             services.AddTransient<IBusinessUnitService, BusinessUnitService>();
             services.AddTransient<IEmployeeService, EmployeeService>();
+            services.AddTransient<IPlayerDataService, PlayerDataService>();
 
             services.AddAutoMapper(typeof(Startup));
 
