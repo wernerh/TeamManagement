@@ -31,5 +31,13 @@ namespace TeamManagement.Data.Repositories
         {
             return await AddAsync(new BusinessUnit { Name = name, BusinessUnitTypeId = businessUnitTypeId, BusinessUnitLocationId = businessUnitLocationId, ParentBusinessUnitId = parentBusinessUnitId });
         }
+
+        public async Task<BusinessUnit> UpdateBusinessUnitLocationAsync(int id, int newBusinessUnitLocationId)
+        {
+            var businessUnit = GetAll().FirstOrDefaultAsync(x => x.Id == id).Result;
+            businessUnit.BusinessUnitLocationId = newBusinessUnitLocationId;
+
+            return await UpdateAsync(businessUnit);
+        }
     }
 }

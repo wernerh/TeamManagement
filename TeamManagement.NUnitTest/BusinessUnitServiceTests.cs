@@ -72,5 +72,34 @@ namespace TeamManagement.NUnitTest
             Assert.AreEqual(resultDto.Name, businessUnitDto.Name);
         }
 
+        [Test]
+        public void UpdateBusinessUnitLocation()
+        {
+            int businessUnitId = 1;
+            int newBusinessUnitLocationId = 5;
+
+            var businessUnit = new BusinessUnit
+            {
+                Id = 1,
+                BusinessUnitTypeId = 1,
+                BusinessUnitLocationId = 5,
+                Name = "Blue Bulls"
+            };
+
+            var businessUnitDto = new BusinessUnitDto
+            {
+                BusinessUnitTypeId = 1,
+                BusinessUnitLocationId = 5,
+                Name = "Blue Bulls"
+            };
+
+            _mockRepository.Setup(x => x.UpdateBusinessUnitLocationAsync(businessUnitId, newBusinessUnitLocationId))
+                           .ReturnsAsync(businessUnit);
+
+            var resultDto = _businessUnitService.UpdateBusinessUnitLocationAsync(businessUnitId, newBusinessUnitLocationId).Result;
+
+            Assert.AreEqual(resultDto.BusinessUnitLocationId, businessUnitDto.BusinessUnitLocationId);
+        }
+
     }
 }

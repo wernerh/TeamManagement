@@ -9,5 +9,6 @@ namespace TeamManagement.Services.Services
         Task<List<BusinessUnitDto>> GetAllBusinessUnitsAsync();
         Task<BusinessUnitDto> GetBusinessUnitByIdAsync(int id);
         Task<BusinessUnitDto> AddBusinessUnitsAsync(BusinessUnitDto unit);
+        Task<BusinessUnitDto> UpdateBusinessUnitLocationAsync(int id, int newBusinessUnitLocationId);
     }
 }

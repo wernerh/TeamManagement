@@ -38,5 +38,12 @@ namespace TeamManagement.Services.Services
 
             return _mapper.Map<BusinessUnitDto>(result);
         }
+
+        public async Task<BusinessUnitDto> UpdateBusinessUnitLocationAsync(int id, int newBusinessUnitLocationId)
+        {
+            var result = await _businessUnitRepository.UpdateBusinessUnitLocationAsync(id, newBusinessUnitLocationId);
+
+            return _mapper.Map<BusinessUnitDto>(result);
+        }
     }
 }

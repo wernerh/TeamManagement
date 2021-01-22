@@ -39,5 +39,12 @@ namespace TeamManagement.Controllers
         {
             return _businessUnitService.AddBusinessUnitsAsync(unit).Result;
         }
+
+        [Route("api/[controller]/[action]")]
+        [HttpPost]
+        public BusinessUnitDto UpdateBusinessUnitLocation(int id, int newBusinessUnitLocationId)
+        {
+            return _businessUnitService.UpdateBusinessUnitLocationAsync(id, newBusinessUnitLocationId).Result;
+        }
     }
 }

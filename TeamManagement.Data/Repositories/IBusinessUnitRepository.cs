@@ -11,5 +11,7 @@ namespace TeamManagement.Data.Repositories
         Task<List<BusinessUnit>> GetAllBusinessUnitsAsync();
 
         Task<BusinessUnit> AddBusinessUnitsAsync(string name, int businessUnitTypeId, int businessUnitLocationId, int? parentBusinessUnitId = null);
+
+        Task<BusinessUnit> UpdateBusinessUnitLocationAsync(int id, int newBusinessUnitLocationId);
     }
 }
